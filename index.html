@@ -4,226 +4,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Find tutors, learn new skills, and share your expertise with TutorLink.">
+  <meta name="theme-color" content="#101828">
   <title>TutorLink | Learn Together</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header class="navbar">
-    <a href="#home" class="logo"><span>T</span> TutorLink</a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-
-    <nav id="navigation">
-      <a href="#home">Home</a>
-      <a href="#find-tutors">Find Tutors</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#teach">Become a Tutor</a>
+    <a href="#" class="brand" onclick="showHome(); return false;">
+      <span class="brand-icon">T</span> TutorLink
+    </a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#tutors">Find Tutors</a>
+      <button class="btn btn-outline" onclick="showAuth('login')">Log In</button>
+      <button class="btn btn-primary" onclick="showAuth('register')">Get Started</button>
     </nav>
-
-    <div class="nav-buttons">
-      <button class="btn btn-light" id="loginBtn">Log In</button>
-      <button class="btn btn-primary" id="signupBtn">Get Started</button>
-    </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <span class="eyebrow">LEARN SOMETHING EXTRAORDINARY</span>
-        <h1>Find the right tutor.<br>Unlock your <span>potential.</span></h1>
-        <p>Connect with knowledgeable teachers, discover new subjects, and learn at your own pace. Your next learning opportunity starts here.</p>
-
-        <div class="hero-buttons">
-          <a href="#find-tutors" class="btn btn-primary btn-large">Explore Tutors ↗</a>
-          <button class="btn btn-outline btn-large" id="heroTeacherBtn">Become a Tutor</button>
+    <section id="homeView">
+      <section class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">LEARN SMARTER. GROW FASTER.</span>
+          <h1>Meet the right tutor.<br><span>Unlock your potential.</span></h1>
+          <p>Connect with passionate teachers, discover new skills, and make learning work for you.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-large" onclick="showAuth('register','student')">Find a Tutor →</button>
+            <button class="btn btn-light btn-large" onclick="showAuth('register','teacher')">Become a Tutor</button>
+          </div>
+          <div class="hero-note">For students. For teachers. For a brighter future.</div>
         </div>
-
-        <div class="hero-note">
-          <div class="mini-avatars"><span>A</span><span>M</span><span>Z</span><span>+</span></div>
-          <p><strong>A community built around learning</strong><br>Students and teachers growing together.</p>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <div class="art-circle"></div>
-        <div class="learning-card">
-          <span class="card-label">YOUR NEXT CHAPTER</span>
-          <div class="book-icon">Ab</div>
-          <h2>Knowledge opens doors.</h2>
-          <p>Discover a better way to learn.</p>
-          <div class="card-bottom"><span>LEARN · CONNECT · GROW</span><span>✦</span></div>
-        </div>
-        <div class="floating-card floating-top">✦ &nbsp; Learn at your pace</div>
-        <div class="floating-card floating-bottom">✓ &nbsp; Find your learning partner</div>
-      </div>
-    </section>
-
-    <section class="search-section" id="find-tutors">
-      <div class="section-heading">
-        <span class="eyebrow">YOUR LEARNING JOURNEY</span>
-        <h2>What do you want to learn?</h2>
-        <p>Search by subject, teacher name, or learning level.</p>
-      </div>
-
-      <div class="search-bar">
-        <span class="search-symbol">⌕</span>
-        <input type="search" id="searchInput" placeholder="Try Mathematics, English, Coding...">
-        <select id="levelFilter">
-          <option value="">All levels</option>
-          <option>Beginner</option>
-          <option>Intermediate</option>
-          <option>Advanced</option>
-          <option>Secondary School</option>
-          <option>Exam Preparation</option>
-        </select>
-        <button class="btn btn-primary" id="searchBtn">Search</button>
-      </div>
-
-      <div class="subject-filters">
-        <button class="chip active" data-subject="">All Subjects</button>
-        <button class="chip" data-subject="Mathematics">Mathematics</button>
-        <button class="chip" data-subject="English">English</button>
-        <button class="chip" data-subject="Physics">Physics</button>
-        <button class="chip" data-subject="Chemistry">Chemistry</button>
-        <button class="chip" data-subject="Biology">Biology</button>
-        <button class="chip" data-subject="Coding">Coding</button>
-      </div>
-
-      <div class="tutor-grid" id="tutorGrid"></div>
-      <div class="empty-state hidden" id="emptyState">
-        <h3>No tutors found</h3>
-        <p>Try another subject or clear your search.</p>
-        <button class="btn btn-outline" id="clearSearch">Clear Search</button>
-      </div>
-    </section>
-
-    <section class="how-section" id="how-it-works">
-      <div class="section-heading">
-        <span class="eyebrow">SIMPLE BY DESIGN</span>
-        <h2>A smarter way to<br>learn and teach.</h2>
-        <p>Getting started is easy, whether you're searching for help or ready to share your knowledge.</p>
-      </div>
-
-      <div class="steps-grid">
-        <article class="step">
-          <span class="step-number">01</span>
-          <div class="step-icon">⌕</div>
-          <h3>Discover</h3>
-          <p>Search for your subject and explore teacher profiles and expertise.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">02</span>
-          <div class="step-icon">↗</div>
-          <h3>Connect</h3>
-          <p>Find a suitable tutor and contact them to discuss your learning goals.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">03</span>
-          <div class="step-icon">✦</div>
-          <h3>Grow</h3>
-          <p>Build confidence, improve your skills, and work towards your goals.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="teach-section" id="teach">
-      <div class="teach-panel">
-        <div>
-          <span class="eyebrow light-eyebrow">FOR TEACHERS & EXPERTS</span>
-          <h2>Share your knowledge.<br><span>Make an impact.</span></h2>
-          <p>Create your tutor profile, list the subjects you teach, and help students find the support they need.</p>
-          <button class="btn btn-lime btn-large" id="teacherSignupBtn">Create Tutor Profile ↗</button>
-        </div>
-        <div class="teach-illustration">
-          <div class="paper">
-            <span>YOUR EXPERTISE</span>
-            <div class="paper-line"></div>
-            <div class="paper-line short"></div>
-            <h3>Share what<br>you know.</h3>
-            <div class="paper-star">✦</div>
+        <div class="hero-art">
+          <div class="art-card card-one">
+            <span class="art-emoji">📚</span>
+            <strong>Learn anything</strong>
+            <small>At your own pace</small>
+          </div>
+          <div class="art-circle">🎓</div>
+          <div class="art-card card-two">
+            <span class="online-dot"></span>
+            <strong>Your next tutor</strong>
+            <small>Is waiting to meet you</small>
           </div>
         </div>
+      </section>
+
+      <section class="stats">
+        <div><strong>01</strong><span>Create your account</span></div>
+        <div><strong>02</strong><span>Find your learning match</span></div>
+        <div><strong>03</strong><span>Start your journey</span></div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="section-heading">
+          <span class="eyebrow">WHY TUTORLINK?</span>
+          <h2>Learning, made simpler.</h2>
+          <p>Everything you need to connect and grow in one place.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🔎</div>
+            <h3>Find your tutor</h3>
+            <p>Search by subject and discover teachers who match your learning needs.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">👩‍🏫</div>
+            <h3>Teach your skills</h3>
+            <p>Create a teacher profile and tell students what you can teach.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Your own account</h3>
+            <p>Register once and use your existing login details whenever you return.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="tutors" class="section search-section">
+        <div class="section-heading">
+          <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+          <h2>Ready to find your tutor?</h2>
+          <p>Create a free student account to explore teacher profiles.</p>
+          <button class="btn btn-primary btn-large" onclick="showAuth('register','student')">Explore Tutors →</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="authView" class="auth-section hidden">
+      <div class="auth-card">
+        <button class="back-link" onclick="showHome()">← Back to home</button>
+        <div class="auth-logo">T</div>
+        <h2 id="authTitle">Welcome back</h2>
+        <p id="authSubtitle">Log in to continue your learning journey.</p>
+
+        <div class="auth-tabs">
+          <button id="loginTab" class="auth-tab active" onclick="showAuth('login')">Log In</button>
+          <button id="registerTab" class="auth-tab" onclick="showAuth('register')">Create Account</button>
+        </div>
+
+        <div id="message" class="message hidden" role="alert"></div>
+
+        <form id="authForm">
+          <div id="nameField" class="field hidden">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" placeholder="Enter your full name" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter your password" minlength="8" autocomplete="current-password" required>
+          </div>
+
+          <div id="roleField" class="field hidden">
+            <label for="role">I want to join as a</label>
+            <select id="role">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </div>
+
+          <button id="submitBtn" type="submit" class="btn btn-primary btn-large full-width">Log In</button>
+        </form>
+
+        <p class="switch-text" id="switchText">
+          New to TutorLink?
+          <button onclick="showAuth('register')">Create an account</button>
+        </p>
+        <p class="security-note">Demo version: use a test password, not a password you use elsewhere.</p>
+      </div>
+    </section>
+
+    <section id="dashboardView" class="dashboard hidden">
+      <aside class="sidebar">
+        <a href="#" class="brand sidebar-brand"><span class="brand-icon">T</span> TutorLink</a>
+        <div class="side-label">WORKSPACE</div>
+        <button class="side-link active" onclick="showDashboard()">▦ &nbsp; Dashboard</button>
+        <button id="browseLink" class="side-link" onclick="showBrowse()">⌕ &nbsp; Find Teachers</button>
+        <button id="profileLink" class="side-link hidden" onclick="showProfile()">♙ &nbsp; My Profile</button>
+        <div class="sidebar-bottom">
+          <div class="user-mini">
+            <div class="avatar" id="sideAvatar">U</div>
+            <div><strong id="sideName">User</strong><small id="sideRole">Student</small></div>
+          </div>
+          <button class="side-link logout-link" onclick="logout()">↪ &nbsp; Log Out</button>
+        </div>
+      </aside>
+
+      <div class="dashboard-main">
+        <header class="dash-header">
+          <div>
+            <span class="eyebrow">YOUR WORKSPACE</span>
+            <h1 id="welcomeTitle">Welcome back!</h1>
+          </div>
+          <div class="header-user" id="headerUser"></div>
+        </header>
+        <div id="dashboardContent"></div>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
-    <div class="footer-top">
-      <a href="#home" class="logo"><span>T</span> TutorLink</a>
-      <p>Connecting curious minds with people who love to teach.</p>
-      <div class="contact-details">
-        <strong>Contact Us</strong>
-        <a href="tel:+2349116221696">09116221696</a>
-        <a href="mailto:temmyo267@gmail.com">temmyo267@gmail.com</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> TutorLink. All rights reserved.</span>
-      <a href="#home">Back to top ↑</a>
-    </div>
+  <footer class="footer">
+    <div><a href="#" class="brand"><span class="brand-icon">T</span> TutorLink</a><p>Bringing teachers and learners together.</p></div>
+    <div class="footer-contact"><strong>Contact us</strong><p>Phone: 09116221696</p><p>Email: temmyo267@gmail.com</p></div>
+    <p class="copyright">© <span id="year"></span> TutorLink. All rights reserved.</p>
   </footer>
 
-  <!-- Signup and login modal -->
-  <div class="modal-overlay hidden" id="authModal">
-    <div class="modal">
-      <button class="close-modal" id="closeModal" aria-label="Close">×</button>
-      <a href="#home" class="logo"><span>T</span> TutorLink</a>
-
-      <h2 id="modalTitle">Create your account</h2>
-      <p id="modalDescription">Choose how you want to use TutorLink.</p>
-
-      <div class="role-options" id="roleOptions">
-        <button type="button" class="role-option selected" data-role="student">
-          <strong>I'm a student</strong>
-          <small>Find a tutor</small>
-        </button>
-        <button type="button" class="role-option" data-role="teacher">
-          <strong>I'm a teacher</strong>
-          <small>Teach students</small>
-        </button>
-      </div>
-
-      <form id="authForm">
-        <div id="nameField">
-          <label for="fullName">Full name</label>
-          <input id="fullName" type="text" placeholder="Enter your full name" required>
-        </div>
-
-        <label for="emailInput">Email address</label>
-        <input id="emailInput" type="email" placeholder="you@example.com" required>
-
-        <label for="passwordInput">Password</label>
-        <input id="passwordInput" type="password" placeholder="At least 6 characters" minlength="6" required>
-
-        <div id="teacherFields" class="hidden">
-          <label for="subjectsInput">Subjects you teach</label>
-          <input id="subjectsInput" type="text" placeholder="Mathematics, Physics, Coding">
-
-          <label for="teacherLevel">Teaching level</label>
-          <select id="teacherLevel">
-            <option>Beginner</option>
-            <option>Intermediate</option>
-            <option>Advanced</option>
-            <option>Secondary School</option>
-            <option>Exam Preparation</option>
-          </select>
-
-          <label for="bioInput">Short introduction</label>
-          <textarea id="bioInput" rows="3" placeholder="Tell students about your teaching..."></textarea>
-        </div>
-
-        <p id="formMessage" class="form-message" role="status"></p>
-        <button type="submit" class="btn btn-primary btn-large full-width" id="submitBtn">Create Account →</button>
-      </form>
-
-      <p class="switch-auth" id="switchAuth">Already have an account? <button type="button" id="switchToLogin">Log in</button></p>
-      <p class="demo-warning">Demo only: accounts are saved in this browser. Do not use a real password.</p>
-    </div>
-  </div>
-
-  <div class="toast" id="toast"></div>
   <script src="script.js"></script>
 </body>
 </html>
